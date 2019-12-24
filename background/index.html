@@ -217,10 +217,10 @@
 
 		var json = JSON.parse( text );
 
-		app = new APP.Player(); // (global for debug!)
+		app = new APP.Player();
 
 		app.load( json );
-	//	app.setSize( window.innerWidth, window.innerHeight );
+		app.setSize( window.innerWidth, window.innerHeight );
 	//	app.play();
 
 	//	document.body.appendChild( app.dom );
