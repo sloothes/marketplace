@@ -15,8 +15,16 @@
 	"scripts": {
 		"CDCD4F70-A4AC-4B5E-9877-464AF4272CFC": [
 			{
-				"name": "",
-				"source": "console.log( this );"
+				"name": "html.js",
+				"source": "//\tAdd here the dynamic html code."
+			},
+			{
+				"name": "scc.js",
+				"source": "//  Socketcluster.\n\nvar socket = socketCluster.create({\n\thostname: \"anywhere3d.com\",\n\tcodecEngine: scCodecMinBin,\n});\n\nsocket.on(\"connect\", function(status){\n\tdebugMode && console.log({\"status\": status});\n});\n\nsocket.on(\"error\", function (err) {\n\tconsole.error( err.stack );\n});\n\nsocket.on(\"authStateChange\", function( state ){\n\tdebugMode && console.log({\"authStateChange\": state});\n});\n\nsocket.on(\"subscribe\", function( name, object ){\n\tdebugMode && console.log(\"subscribed successfully to\", name, \"channel:\", object);\n});\n\n"
+			},
+			{
+				"name": "pager.js",
+				"source": "//  Pager.\n/*\nconst pager = document.getElementById(\"product-catalogue-pager\");\nconst displayObjects = document.getElementById(\"products-display\");\nconst catalogItemsPanel = document.getElementById(\"catalogue-items-panel\");\nconst productCatalogPanel = document.getElementById(\"product-catalogue-panel\");\nconst productCatalogPager = document.getElementById(\"product-catalogue-pager\");\n\nvar pagebuttons = $(pager).find(\".page-btn\");\nvar pageslength = $(pager).find(\".page-btn\").length;\n\nconst firstPageBtn = $(pager).find(\".first-page-btn\").get(0);\nconst lastPageBtn  = $(pager).find(\".last-page-btn\").get(0);\nconst prevPageBtn  = $(pager).find(\".get-prev-btn\").get(0);\nconst nextPageBtn  = $(pager).find(\".get-next-btn\").get(0);\nconst prevGroupBtn = $(pager).find(\".get-prev-group-btn\").get(0);\nconst nextGroupBtn = $(pager).find(\".get-next-group-btn\").get(0);\n\nconst pageSelector = \"#product-catalogue-pager .page-btn\";\n\nconst counters  = $(\".items-counter\").toArray();\nconst counterRT = document.getElementById(\"counter-top-right\");\nconst counterBC = document.getElementById(\"counter-bottom-center\");\n\nvar timeout;\nvar interval;\nvar selectors;\nvar delay = 200;\n\nvar limit = 12;\nvar currency = \"$\"; // important!\n\nvar max = 0;\nvar skip = 0;\nvar lastpage = 0;\nvar currentpage = 0;\nvar currentindex = 0;\n\nconst collection = \"products\";\n\n//  Signals.\nvar Signal = signals.Signal;\n\nfunction count(){\n\n\tsocket.emit(\"mongo count\", {\n\t\tselectors: {},\n\t\tcollection: collection,\n\t\toptions: { skip:0 }\n\t}, function(err, num){\n\t\tmax = num; \n\t\t$(\".count\").text(max);\n\t\tdebugMode && console.log(\"max:\", max);\n\t});\n\n}\n\nfunction reset(){\n\n\tmax = 0;\n\tskip = 0;\n\tlastpage = 0;\n\tcurrentpage = 0;\n\tcurrentindex = 0;\n\n}\n\nfunction getItems(){\n\n\tsocket.emit(\"mongo find\", {\n\n\t\tselectors: {},\n\t\tcollection: collection,\n\t\toptions: { skip:skip, limit:limit }\n\n\t}, function(err, docs){\n\t\tdebugMode && console.log(\"docs:\", docs);\n\n\t\tif ( !docs.length ) return;\n\n\t\tdisplayObjects.children().remove(); // important!\n\n\t\tdocs.forEach(function(doc, index){\n\n\t\t\tvar card = document.createElement(\"li\");\n\t\t\tcard.id = doc._id; // card.data = doc; // optional!\n\t\t\tcard.classList.add(\"well\", \"product-card\");\n\t\t\tcard.style.cssText = \"vertical-align:middle!important;\";\n\n\t\t\tvar img = new Image();\n\t\t\timg.classList.add(\"thumbnail\");\n\t\t\timg.style.cssText = \"width:100%;height:auto;margin:0 auto 10px auto;\";\n\t\t\tvar url = \"https://i.imgur.com/\" + doc.preview[0] + \"s.jpg\";\n\n\t\t\t//\tdemo.\n\t\t\timg.addEventListener( \"load\", function onload(){\n\t\t\t\timg.removeEventListener( \"load\", onload );\n\t\t\t\tdisplayObjects.appendChild(card); // demo.\n\t\t\t});\n\t\t\timg.src = url;\n\t\t\tcard.appendChild(img);\n\n\t\t});\n\n\t});\n\n}\n\nsocket.on(\"connect\", function(status){\n\n\tcount();\n\n//\tinit.\n\n//  Page buttons numbering.\n\tpagebuttons.each(function(i){\n\t\tpagebuttons[i].skip = limit * i;\n\t\t$(pagebuttons[i]).text( i + 1 );\n\t});\n\n//  Current button setup.\n\tpagebuttons.removeClass(\"btn-primary\");\n\tvar currentButton = pagebuttons.get(0);\n\t$(currentButton).addClass(\"btn-primary\");\n\n//  Clear listed objects.\n\t$(displayObjects).children().remove();\n\n\tgetItems();\n\n});\n*/"
 			}]
 	},
 	"camera": {
@@ -35,7 +43,7 @@
 			"near": 0.1,
 			"far": 10000,
 			"focus": 10,
-			"aspect": 1.8305084745762712,
+			"aspect": 1.937799043062201,
 			"filmGauge": 35,
 			"filmOffset": 0
 		}
