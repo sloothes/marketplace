@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" contents="">
 
-    <title>Background catalogue</title>
+    <title>Background market</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootbox-dialoges.css">
@@ -203,16 +203,53 @@
 <script src="/js/signals.min.js"></script>
 <script src="/js/validator.min.js"></script>
 
+<script src="js/app.js"></script>
+<script src="/three/three.js"></script>
+<script src="/three/EditorControls.js"></script> 
 
+<script>
 
+//	Loader.
 
+	var manager = new THREE.LoadingManager();
+	var loader = new THREE.XHRLoader( manager );
+	loader.load( "demo.json", function ( text ) {
 
+		var json = JSON.parse( text );
 
+		app = new APP.Player(); // (global for debug!)
 
+		app.load( json );
+	//	app.setSize( window.innerWidth, window.innerHeight );
+	//	app.play();
 
+	//	document.body.appendChild( app.dom );
 
+		if ( json.project.editable === true ) {
 
+			var button = document.createElement( "div" );
+			button.id = "edit";
+			button.textContent = "OPEN TO EDITOR";
+			button.addEventListener( "click", function ( event ) {
 
+				var url = location.href.split( "/" ).slice( 0, - 1 ).join( "/" );
+				window.open( "https://sloothes.com/three/r78/editor/#file=" + url + "/app.json" );
+
+			}, false );
+
+			document.body.appendChild( button );
+
+		}
+
+	//	Resize.
+
+		window.addEventListener( "resize", function () {
+			app.setSize( window.innerWidth, window.innerHeight );
+		});
+
+	});
+
+</script>
 
 </body>
 </html>
