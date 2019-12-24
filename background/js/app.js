@@ -29,9 +29,7 @@ var APP = {
 			THREE.Cache.enabled = json.project.cache; // important!
 			console.log({ "vr": vr, "debugMode": debugMode, "cache": THREE.Cache.enabled });
 
-		//	Renderer (is global for debug only).
-
-			var renderer = new THREE.WebGLRenderer({ 
+			renderer = new THREE.WebGLRenderer({ 
 				antialias: true,
 				preserveDrawingBuffer: true,
             });
@@ -42,11 +40,10 @@ var APP = {
 			if ( json.project.shadows ) {
 
 				renderer.shadowMap.enabled = true;
-			//	renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 			}
 
-			this.dom.appendChild( renderer.domElement );
+		//	this.dom.appendChild( renderer.domElement );
 			this.setScene( loader.parse( json.scene ) );
 			this.setCamera( loader.parse( json.camera ) );
 
