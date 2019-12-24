@@ -16,7 +16,7 @@
 		"CDCD4F70-A4AC-4B5E-9877-464AF4272CFC": [
 			{
 				"name": "scc.js",
-				"source": "//  Socketcluster.\n\nvar socket = socketCluster.create({\n\thostname: \"anywhere3d.com\",\n\tcodecEngine: scCodecMinBin,\n});\n\nsocket.on(\"connect\", function(status){\n\tdebugMode && console.log({\"status\": status});\n});\n\nsocket.on(\"error\", function (err) {\n\tconsole.error( err.stack );\n});\n\nsocket.on(\"authStateChange\", function( state ){\n\tdebugMode && console.log({\"authStateChange\": state});\n});\n\nsocket.on(\"subscribe\", function( name, object ){\n\tdebugMode && console.log(\"subscribed successfully to\", name, \"channel:\", object);\n});\n\n"
+				"source": "//  Socketcluster.\n\nsocket = socketCluster.create({\n\thostname: \"anywhere3d.com\",\n\tcodecEngine: scCodecMinBin,\n});\n\nsocket.on(\"connect\", function(status){\n\tdebugMode && console.log({\"status\": status});\n});\n\nsocket.on(\"error\", function (err) {\n\tconsole.error( err.stack );\n});\n\nsocket.on(\"authStateChange\", function( state ){\n\tdebugMode && console.log({\"authStateChange\": state});\n});\n\nsocket.on(\"subscribe\", function( name, object ){\n\tdebugMode && console.log(\"subscribed successfully to\", name, \"channel:\", object);\n});\n\n"
 			},
 			{
 				"name": "pager.js",
