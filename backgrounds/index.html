@@ -512,7 +512,7 @@
 			docs.forEach(function(doc, index){
 
 				var card = document.createElement("li");
-				card.id = doc._id; // card.data = doc; // optional!
+				card.id = doc._id;
 				card.classList.add("well", "product-card");
 				card.style.cssText = "vertical-align:middle!important;";
 
@@ -522,19 +522,16 @@
 					img.classList.add("thumbnail");
 				});
 				img.classList.add("product-img");
-			//	img.style.cssText = "max-width:100%;height:auto;margin:0 auto 10px auto;";
 				card.appendChild(img);
 				
 
 				var title = document.createElement("div");
 				title.classList.add("product-title");
-			//	title.style.cssText = "color:#fff;font-size:1.5em;font-weight:bold;max-width:100%;max-height:2em;margin:0 auto 10px auto;overflow:hidden;";
 				title.textContent = doc.title;
 				card.appendChild(title);
 
 				var price = document.createElement("div");
 				price.classList.add("product-price");
-			//	price.style.cssText = "color:#fff;font-size:2em;font-weight:bold;max-width:100%;max-height:3em;margin:0 auto 10px auto;";
 				price.textContent = doc.value;
 				card.appendChild(price);
 

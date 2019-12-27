@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" contents="">
+
+    <title>Background market (1)</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootbox-dialoges.css">
+    <link rel="stylesheet" href="/css/anywhere3d.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/photoswipe.css">
+    <link rel="stylesheet" href="/css/photoswipe/default-skin.css">
+	<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.5/default/snipcart.css" />
+
+    <script>debugMode = true;</script>
+    <script src="/socketcluster.js"></script>
+    <script src="/sc-codec-min-bin.js"></script>
+    <script src="/js/photoswipe.js"></script>
+    <script src="/js/photoswipe-ui-default.js"></script>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/rawinflate.js"></script>
+	<script src="/js/rawdeflate.js"></script>
+	<script src="/js/Objectid.js"></script>
+	<script src="/js/zangodb.min.js"></script>
+	<script src="/js/bootbox.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/DeviceDetector.js"></script>
+	<script src="/js/MathDecimalAdjustment.js"></script>
+	<script src="/js/system.min.js"></script>
+
+</head>
+
+<body>
+
+<style>
+
+    body {
+        overflow:auto;
+    }
+
+    .well { 
+        background:none; 
+    }
+
+    .well.product-card { 
+    /*  vertical-align:middle !important;  */
+        color: #fff;
+        display:inline-block; 
+        height:360px; 
+        width:235px;
+		margin:10px;
+    }
+
+    .card-field-price {
+        font-size:3rem;
+        font-weight:bold;
+        font-family:sans-serif;
+        text-align:center;
+    }
+
+    .card-field-title {
+        color:#ccc;
+        max-width:100%;
+        font-size:2rem;
+        font-weight:normal;
+        font-family:sans-serif;
+        text-overflow:ellipsis;
+        text-align:center;
+    }
+
+    #catalogue-section {
+        overflow:auto;
+        background-color:#000;
+    }
+
+    #products-display {
+        border:none;
+        height:700px;
+        min-width:320px;
+		max-width: 1600px;
+        min-height:438px;
+        max-height:705px;
+		margin: 20px auto;
+        text-align:center;
+        overflow:auto;
+    }
+
+	.product-img {
+		width:170px;
+		height:170px;
+		margin:10px auto;
+	}
+
+	.product-title {
+		color:#fff;
+		font-size:1.5em;
+		font-weight:bold;
+		max-width:100%;
+		max-height:2em;
+		margin:0 auto 10px auto;
+		overflow:hidden;
+	}
+
+	.product-price {
+		color:#fff;
+		font-size:2em;
+		font-weight:bold;
+		max-width:100%;
+		max-height:3em;
+		margin:0 auto 10px auto;
+	}
+
+    @media all and ( max-width: 640px ) {
+
+        .well.product-card { 
+            display:inline-block; 
+            height:65%; 
+            width:100%;
+        }
+
+        #products-display {
+            max-height: 300px;
+        }
+    }
+
+    /*  photoswipe  */
+
+    .viewer {
+        width:750px;
+        height:750px;
+        max-width:90%;
+        max-height:90%;
+        background:#ffffff33;
+    }
+
+    /*  snipcart  */
+
+    .snipcart-add-item {
+        color:#fff;
+        width:80%;
+        font-size:2rem;
+        padding:6px 14px;
+        border:1px solid #ddd;
+        border-radius:20px !important;
+        background-color:#42bcf9;
+    }
+	
+	a.snipcart-add-item {
+		cursor:pointer;
+		text-decoration:none;
+		background-color:#42bcf9 !important;
+	}
+
+
+</style>
+
+<section class="mbr-section" id="catalogue-section">
+
+<div id="products-catalogue-panel" class="tab-content" style="width:100%;">
+
+    <div id="catalogue-items-panel" class="well" style="width:100%;margin:0;">
+
+        <h4 style="color:#fff;"><a href="/marketplace">market&nbsp;/</a>&nbsp;backgrounds:
+            <div id="counter-top-right" class="pull-right small items-counter" style="margin-top:4px;color:#ddd;">
+                items <span class="from">-</span>
+                to <span class="upto">-</span>
+                of <span class="count">null</span>
+            </div>
+        </h4>
+
+        <div id="products-catalogue-pager" class="pager">
+            <div style="margin:10px auto 10px auto;height:35px;max-width:400px;">
+                <li class="btn btn-primary get-prev-btn pull-left">&#9668;</li>
+                <div class="pager-buttons-holder" style="display:inline;">
+                    <a class="btn btn-default page-btn">1</a>
+                    <a class="btn btn-default page-btn">2</a>
+                    <a class="btn btn-default page-btn">3</a>
+                    <a class="btn btn-default page-btn">4</a>
+                </div>
+                <li class="btn btn-primary get-next-btn pull-right">&#9658;</li>
+            </div>
+
+
+			<div id="products-display" class="well">
+				<li id="KdTjgt" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/5f641dae-0a15-43c5-8337-7ca7f9303324"><div class="product-title">001</div><div class="product-price">0.59</div><a class="snipcart-add-item" data-item-name="001" data-item-price="0.59" data-item-id="BGD780-564-006" data-item-image="https://i.imgur.com/GKYsaK6t.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="n7uSPl" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/14e89099-273b-4ece-bdce-c1f96c384b0e"><div class="product-title">autumn</div><div class="product-price">0.19</div><a class="snipcart-add-item" data-item-name="autumn" data-item-price="0.19" data-item-id="BGD875-353-006" data-item-image="https://i.imgur.com/MpytPQnt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="nXHp6q" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/585968a8-0caf-4c4b-bb2c-a0cf8ed16083"><div class="product-title">Dark Sunset</div><div class="product-price">0.53</div><a class="snipcart-add-item" data-item-name="Dark Sunset" data-item-price="0.53" data-item-id="BGD572-364-006" data-item-image="https://i.imgur.com/ty5neutt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="bW6zgz" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/0c9e3ba2-ab21-4eea-b286-2963b71c92d5"><div class="product-title">forest</div><div class="product-price">0.24</div><a class="snipcart-add-item" data-item-name="forest" data-item-price="0.24" data-item-id="BGD328-001-006" data-item-image="https://i.imgur.com/wVNQ3UPt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="QZNW37" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/68423c4f-de74-4ce6-a13f-e18cc322b877"><div class="product-title">island</div><div class="product-price">0.90</div><a class="snipcart-add-item" data-item-name="island" data-item-price="0.90" data-item-id="BGD484-643-006" data-item-image="https://i.imgur.com/dC6LmWyt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="j6cE5p" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/9c536dfe-b354-4a95-a500-34b220a06bf1"><div class="product-title">mebula</div><div class="product-price">0.00</div><a class="snipcart-add-item" data-item-name="mebula" data-item-price="0.00" data-item-id="BGD337-452-006" data-item-image="https://i.imgur.com/OWp9t1xt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="pbMOoM" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/fc064fff-449c-47b2-afa9-237ad00d7aaa"><div class="product-title">pines-road</div><div class="product-price">0.82</div><a class="snipcart-add-item" data-item-name="pines-road" data-item-price="0.82" data-item-id="BGD421-403-006" data-item-image="https://i.imgur.com/J5JO8vFt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="EcucQe" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/f768f1b9-2301-43bd-b96b-1a7f29712551"><div class="product-title">sky02</div><div class="product-price">0.53</div><a class="snipcart-add-item" data-item-name="sky02" data-item-price="0.53" data-item-id="BGD889-915-006" data-item-image="https://i.imgur.com/AiYr5Bjt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="1PP291" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/45ce55aa-8870-46b5-b3be-a7c99db48d09"><div class="product-title">sky03</div><div class="product-price">0.72</div><a class="snipcart-add-item" data-item-name="sky03" data-item-price="0.72" data-item-id="BGD011-051-006" data-item-image="https://i.imgur.com/fbLkP5bt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="U5zQ0g" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/e6ab816a-a672-40a8-a8c5-b88e7dd8b6d6"><div class="product-title">sky14</div><div class="product-price">0.50</div><a class="snipcart-add-item" data-item-name="sky14" data-item-price="0.50" data-item-id="BGD302-006-006" data-item-image="https://i.imgur.com/oIeGekrt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="7n9hPl" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/31f7e864-98ca-4b39-90b5-5fd6a1a20969"><div class="product-title">sky26</div><div class="product-price">0.74</div><a class="snipcart-add-item" data-item-name="sky26" data-item-price="0.74" data-item-id="BGD086-292-006" data-item-image="https://i.imgur.com/FMADmcPt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li><li id="Xnn7oO" class="well product-card" style="vertical-align: middle !important;"><img class="product-img thumbnail" src="blob:https://sloothes.com/b02f88ac-7e76-4295-b7b2-e0ed46cdf035"><div class="product-title">sky30</div><div class="product-price">0.36</div><a class="snipcart-add-item" data-item-name="sky30" data-item-price="0.36" data-item-id="BGD538-726-006" data-item-image="https://i.imgur.com/S1ck5UUt.jpg" data-item-url="/marketplace/backgrounds">Add to cart</a></li>
+			</div>
+
+            <div style="margin:10px auto 10px auto;height:35px;max-width:400px;">
+                <li class="btn btn-primary btn-white-outline first-page-btn pull-left" style="margin-right:5px;">First</li>
+                <li class="btn btn-primary btn-white-outline get-prev-group-btn pull-left">&#9668;&#9668;</li>
+                <div id="counter-bottom-center" class="items-counter" style="width:fit-content;display:inline;height:35px;margin-top:4px;color:#ddd;">
+                    items <span class="from">-</span> to <span class="upto">-</span> of <span class="count">null</span>
+                </div>
+                <li class="btn btn-primary btn-white-outline last-page-btn pull-right" style="margin-left:5px;">Last</li>
+                <li class="btn btn-primary btn-white-outline get-next-group-btn pull-right">&#9658;&#9658;</li>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- PHOTOSWIPE -->
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<div hidden id="snipcart" data-api-key="MGY1ZGNjMWItZTk5NS00ZTFjLWExMGMtOWVlNjQxM2I2ZmYwNjM3MDI1NTA1ODY4NDc4NTkw"></div>
+<script src="https://cdn.snipcart.com/themes/v3.0.5/default/snipcart.js"></script>
+
+</body>
+</html>
