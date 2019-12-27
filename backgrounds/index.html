@@ -516,14 +516,16 @@
 				card.classList.add("well", "product-card");
 				card.style.cssText = "vertical-align:middle!important;";
 
-				var loader = new THREE.ImageLoader();
-				var url = "https://i.imgur.com/"+doc.posx+"t."+doc.ext;
-				var img = loader.load( url, function( img ){
-				//	img.classList.add("thumbnail");
-				});
+			//	var loader = new THREE.ImageLoader();
+			//	var url = "https://i.imgur.com/"+doc.posx+"t."+doc.ext;
+			//	var img = loader.load( url, function( img ){
+			//		img.classList.add("thumbnail");
+			//	});
+
+				var img = new Image();
 				img.classList.add("product-img");
+				img.src = "https://i.imgur.com/"+doc.posx+"t."+doc.ext;
 				card.appendChild(img);
-				
 
 				var title = document.createElement("div");
 				title.classList.add("product-title");
@@ -551,7 +553,7 @@
 				button.setAttribute("data-item-price", doc.value);
 				button.setAttribute("data-item-id", doc.product_id);
 				button.setAttribute("data-item-image", "https://i.imgur.com/"+doc.posx+"t."+doc.ext);
-				button.setAttribute("data-item-url", "/marketplace/backgrounds");
+				button.setAttribute("data-item-url", "/marketplace/backgrounds/1");
 				card.appendChild(button);
 
 				displayObjects.appendChild(card);
